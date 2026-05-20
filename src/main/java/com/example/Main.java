@@ -8,6 +8,7 @@ import com.example.repository.EstudianteRepository;
 import com.example.repository.SesionAsistenciaRepository;
 
 import com.example.util.JpaUtil;
+import com.example.util.PdfExporter;
 import jakarta.persistence.EntityManager;
 
 import java.time.LocalDate;
@@ -42,6 +43,7 @@ public class Main {
             System.out.println("4. Gestionar Docentes");
             System.out.println("5. Gestionar Estudiantes");
             System.out.println("6. Gestionar Sesiones de Asistencia");
+            System.out.println("7. Exportar a PDF");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
 
@@ -55,6 +57,7 @@ public class Main {
                 case 4 -> menuDocentes();
                 case 5 -> menuEstudiantes();
                 case 6 -> menuSesiones();
+                case 7 -> menuExportarPDF();
                 case 0 -> exit = true;
                 default -> System.out.println("Opción no válida.");
             }
@@ -436,6 +439,68 @@ public class Main {
                 }, () -> System.out.println("No encontrado."));
             }
             default -> System.out.println("Opción no válida.");
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    // EXPORTAR A PDF
+    // ─────────────────────────────────────────────
+    private static void menuExportarPDF() {
+        System.out.println("\n--- EXPORTAR A PDF ---");
+        System.out.println("1. Exportar Estudiantes");
+        System.out.println("2. Exportar Cursos");
+        System.out.println("3. Exportar Docentes");
+        System.out.println("4. Exportar Acudientes");
+        System.out.println("5. Exportar Sesiones de Asistencia");
+        System.out.println("6. Exportar Coordinadores");
+        System.out.println("0. Volver");
+        System.out.print("Opción: ");
+        int opt = scanner.nextInt();
+        scanner.nextLine();
+
+        try {
+            switch (opt) {
+                case 1 -> {
+                    System.out.print("Nombre del archivo (sin .pdf): ");
+                    String archivo = scanner.nextLine().trim();
+                    if (archivo.isEmpty()) archivo = "reporte_estudiantes";
+                    PdfExporter.exportarEstudiantes(estudianteRepo.findAll(), archivo + ".pdf");
+                }
+                case 2 -> {
+                    System.out.print("Nombre del archivo (sin .pdf): ");
+                    String archivo = scanner.nextLine().trim();
+                    if (archivo.isEmpty()) archivo = "reporte_cursos";
+                    PdfExporter.exportarCursos(cursoRepo.findAll(), archivo + ".pdf");
+                }
+                case 3 -> {
+                    System.out.print("Nombre del archivo (sin .pdf): ");
+                    String archivo = scanner.nextLine().trim();
+                    if (archivo.isEmpty()) archivo = "reporte_docentes";
+                    PdfExporter.exportarDocentes(docenteRepo.findAll(), archivo + ".pdf");
+                }
+                case 4 -> {
+                    System.out.print("Nombre del archivo (sin .pdf): ");
+                    String archivo = scanner.nextLine().trim();
+                    if (archivo.isEmpty()) archivo = "reporte_acudientes";
+                    PdfExporter.exportarAcudientes(acudienteRepo.findAll(), archivo + ".pdf");
+                }
+                case 5 -> {
+                    System.out.print("Nombre del archivo (sin .pdf): ");
+                    String archivo = scanner.nextLine().trim();
+                    if (archivo.isEmpty()) archivo = "reporte_sesiones";
+                    PdfExporter.exportarSesiones(sesionRepo.findAll(), archivo + ".pdf");
+                }
+                case 6 -> {
+                    System.out.print("Nombre del archivo (sin .pdf): ");
+                    String archivo = scanner.nextLine().trim();
+                    if (archivo.isEmpty()) archivo = "reporte_coordinadores";
+                    PdfExporter.exportarCoordinadores(coordinadorRepo.findAll(), archivo + ".pdf");
+                }
+                case 0 -> {}
+                default -> System.out.println("Opción no válida.");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al exportar a PDF: " + e.getMessage());
         }
     }
 }
