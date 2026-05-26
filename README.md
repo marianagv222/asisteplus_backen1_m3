@@ -40,10 +40,9 @@ La aplicación corre en consola y ofrece un menú principal con las siguientes o
 7. **Exportar a PDF** — generar reportes de cualquier entidad en formato PDF
 
 
-
 ## Grupo de trabajo
-
-Karina Arboleda Garcia,
-Emmanuel Quintero ,
-Manuela Bermudez,
-Cindy Mariana Gil Velez
+ 
+- Karina Arboleda Garcia
+- Emmanuel Quintero
+- Manuela Bermudez
+- Cindy Mariana Gil Velez
