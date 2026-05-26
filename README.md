@@ -43,7 +43,7 @@ La aplicación corre en consola y ofrece un menú principal con las siguientes o
 
 ## Grupo de trabajo
 
-Karina Arboleda Garcia
-Emmanuel Quintero 
-Manuela Bermudez
+Karina Arboleda Garcia,
+Emmanuel Quintero ,
+Manuela Bermudez,
 Cindy Mariana Gil Velez
