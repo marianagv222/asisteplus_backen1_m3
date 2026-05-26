@@ -1,27 +1,49 @@
-# Proyecto Integrador - Repositorio Base
+# AsistePlus — Backend Módulo 3
 
-Este repositorio sirve como una base sólida y estructurada para el desarrollo de proyectos que requieran persistencia de datos con **Java, JPA/Hibernate y PostgreSQL**.
+Sistema de gestión de asistencia escolar desarrollado en Java. Permite administrar estudiantes, docentes, cursos, acudientes, coordinadores y sesiones de asistencia, con soporte para exportar reportes en PDF.
 
-## Propósito del Repositorio
+## Tecnologías utilizadas
 
-Este proyecto ha sido diseñado para ser **adaptado a la propuesta de cada equipo de trabajo**. Provee una arquitectura limpia basada en el patrón **Repository**, permitiendo a los estudiantes enfocarse en la lógica de negocio y en su modelo Entidad-Relación específico sin tener que configurar el entorno desde cero.
+- **Java 21**
+- **Hibernate 6 (JPA)** — mapeo objeto-relacional
+- **PostgreSQL** — base de datos relacional
+- **iText 8** — generación de reportes PDF
+- **Maven** — gestión de dependencias
 
-## Cómo usar esta base
+## Estructura del proyecto
 
-1.  **Clonar el repositorio**: Utiliza el enlace de abajo para clonar el proyecto en tu máquina local.
-2.  **Definir tu Modelo**: Sustituye o añade las entidades en el paquete `com.example` siguiendo la guía de documentación.
-3.  **Configurar la Base de Datos**: Ajusta las credenciales en `src/main/resources/META-INF/persistence.xml`.
-4.  **Extender**: Sigue los pasos detallados en [docs/DOCUMENTATION.md](docs/DOCUMENTATION.md) para añadir tu propia funcionalidad.
+```
+src/main/java/com/example/
+├── Acudiente.java
+├── Coordinador.java
+├── Curso.java
+├── Docente.java
+├── Estudiante.java
+├── SesionAsistencia.java
+├── Main.java
+├── repository/          # Repositorios para acceso a datos (CRUD)
+└── util/
+    ├── JpaUtil.java     # Configuración del EntityManager
+    └── PdfExporter.java # Exportación a PDF
+```
 
-## Enlace del Repositorio
+## Funcionalidades
 
-Puedes encontrar el código fuente y las actualizaciones en el siguiente enlace:
-👉 [https://github.com/tu-usuario/proyecto-integrador](https://github.com/tu-usuario/proyecto-integrador) 
-*(Sustituir por el enlace real del repositorio del curso/equipo)*
+La aplicación corre en consola y ofrece un menú principal con las siguientes opciones:
 
----
+1. **Gestionar Acudientes** — crear, listar, actualizar y eliminar acudientes
+2. **Gestionar Coordinadores** — CRUD de coordinadores
+3. **Gestionar Cursos** — CRUD de cursos (nombre, grado, jornada, capacidad)
+4. **Gestionar Docentes** — CRUD de docentes
+5. **Gestionar Estudiantes** — CRUD de estudiantes, asociados a curso y acudiente
+6. **Gestionar Sesiones de Asistencia** — registrar sesiones vinculadas a curso y docente
+7. **Exportar a PDF** — generar reportes de cualquier entidad en formato PDF
 
-### Recursos Adicionales
-*   [Guía de Extensión y Arquitectura](docs/DOCUMENTATION.md)
-*   [Documentación de Hibernate](https://hibernate.org/orm/documentation/)
-*   [PostgreSQL JDBC Driver](https://jdbc.postgresql.org/)
+
+
+## Grupo de trabajo
+
+Karina Arboleda Garcia
+Emmanuel Quintero 
+Manuela Bermudez
+Cindy Mariana Gil Velez
